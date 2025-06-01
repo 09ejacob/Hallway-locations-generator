@@ -1,0 +1,110 @@
+[
+    {
+        "location_tag": "E.02.11",
+        "pick_side": "Left",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0211"
+    },
+    {
+        "location_tag": "E.02.15",
+        "pick_side": "Left",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0215"
+    },
+    {
+        "location_tag": "E.02.19",
+        "pick_side": "Left",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0219"
+    },
+    {
+        "location_tag": "E.02.21",
+        "pick_side": "Left",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0211"
+    },
+    {
+        "location_tag": "E.02.25",
+        "pick_side": "Left",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0215"
+    },
+    {
+        "location_tag": "E.02.29",
+        "pick_side": "Left",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0219"
+    },
+    {
+        "location_tag": "E.03.11",
+        "pick_side": "Right",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0311"
+    },
+    {
+        "location_tag": "E.03.15",
+        "pick_side": "Right",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0315"
+    },
+    {
+        "location_tag": "E.03.19",
+        "pick_side": "Right",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0319"
+    },
+    {
+        "location_tag": "E.03.21",
+        "pick_side": "Right",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0311"
+    },
+    {
+        "location_tag": "E.03.25",
+        "pick_side": "Right",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0315"
+    },
+    {
+        "location_tag": "E.03.29",
+        "pick_side": "Right",
+        "slot_bottom_height": 0,
+        "slot_height": 1.46,
+        "pallet_type": "EURShort",
+        "pallet_incline": 0,
+        "agv_location": "E 0319"
+    }
+]
