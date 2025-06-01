@@ -19,7 +19,8 @@ There are a few options to explain in the config.json file:
 12. **file_name** - the name of the generated json file.
 
 After configuring the config.json file, run the main.py file and it will generate a json file with the desired locations.
----
+
+##Extra:
 The locations will be created in a format like this:
 ```
 {
