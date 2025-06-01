@@ -1,5 +1,5 @@
 # Hallway-locations-generator
-Hallway locations generator for a typical warehouse
+Hallway locations generator for a warehouse
 
 ## User guide
 You can configure the settings for the hallway locations generator in the config.json file found in the root of the repository. 
@@ -19,3 +19,16 @@ There are a few options to explain in the config.json file:
 12. **file_name** - the name of the generated json file.
 
 After configuring the config.json file, run the main.py file and it will generate a json file with the desired locations.
+---
+The locations will be created in a format like this:
+```
+{
+    "location_tag": "A.02.11",
+    "pick_side": "Left",
+    "slot_bottom_height": 0,
+    "slot_height": 1.46,
+    "pallet_type": "EURShort",
+    "pallet_incline": 0,
+    "agv_location": "A 0211"
+}
+```
