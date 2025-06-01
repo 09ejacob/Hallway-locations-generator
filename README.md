@@ -20,7 +20,7 @@ There are a few options to explain in the config.json file:
 
 After configuring the config.json file, run the main.py file and it will generate a json file with the desired locations.
 
-##Extra:
+## Extra:
 The locations will be created in a format like this:
 ```
 {
