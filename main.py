@@ -20,6 +20,8 @@ def load_config(path="config.json"):
     cfg.setdefault("second_floor", False)
     cfg.setdefault("slot_bottom_height", 0)
     cfg.setdefault("slot_height", 1.46)
+    cfg.setdefault("slot_bottom_height_floor_2", 1.59)
+    cfg.setdefault("slot_height_floor_2", 1.46)
     cfg.setdefault("flip_pick_side", False)
     cfg.setdefault("exclude_sections", [])
     cfg.setdefault("output_directory", "json_files")
@@ -34,8 +36,8 @@ def load_config(path="config.json"):
     if not isinstance(cfg["second_floor"], bool) or not isinstance(cfg["flip_pick_side"], bool):
         print("Error: 'second_floor' and 'flip_pick_side' must be true or false.")
         sys.exit(1)
-    if not isinstance(cfg["slot_bottom_height"], (int, float)) or not isinstance(cfg["slot_height"], (int, float)):
-        print("Error: 'slot_bottom_height' and 'slot_height' must be numbers.")
+    if not isinstance(cfg["slot_bottom_height"], (int, float)) or not isinstance(cfg["slot_height"], (int, float)) or not isinstance(cfg["slot_height_floor_2"], (int, float)) or not isinstance(cfg["slot_height_floor_2"], (int, float)):
+        print("Error: 'slot_bottom_height', 'slot_height', 'slot_bottom_height', and 'slot_height_floor_2' must be numbers.")
         sys.exit(1)
     if not isinstance(cfg["exclude_sections"], list) or not all(isinstance(x, int) for x in cfg["exclude_sections"]):
         print("Error: 'exclude_sections' must be a list of integers.")
@@ -46,13 +48,15 @@ def load_config(path="config.json"):
 
     return cfg
 
-def generate_e_hallway_locations(
+def generate_hallway_locations(
     hallway_name,
     start_section,
     end_section,
     second_floor,
     slot_bottom_height,
     slot_height,
+    slot_bottom_height_floor_2,
+    slot_height_floor_2,
     flip_pick_side,
     exclude_sections
 ):
@@ -78,11 +82,18 @@ def generate_e_hallway_locations(
             mapped = locations_map.get(loc, loc)
             agv_location = f"{hallway_name} {section:02d}{mapped:02d}"
 
+            if not (loc == 21 or loc == 25 or loc == 29):
+                _slot_bottom_height = slot_bottom_height
+                _slot_height = slot_height 
+            else:
+                _slot_bottom_height = slot_bottom_height_floor_2
+                _slot_height = slot_height_floor_2 
+
             locations.append({
                 "location_tag":       location_tag,
                 "pick_side":          pick_side,
-                "slot_bottom_height": slot_bottom_height,
-                "slot_height":        slot_height,
+                "slot_bottom_height": _slot_bottom_height,
+                "slot_height":        _slot_height,
                 "pallet_type":        "EURShort",
                 "pallet_incline":     0,
                 "agv_location":       agv_location
@@ -93,24 +104,28 @@ def generate_e_hallway_locations(
 def main():
     cfg = load_config("config.json")
 
-    hallway_name       = cfg["hallway_name"]
-    start_section      = cfg["start_section"]
-    end_section        = cfg["end_section"]
-    second_floor       = cfg["second_floor"]
+    hallway_name = cfg["hallway_name"]
+    start_section = cfg["start_section"]
+    end_section = cfg["end_section"]
+    second_floor = cfg["second_floor"]
     slot_bottom_height = cfg["slot_bottom_height"]
-    slot_height        = cfg["slot_height"]
-    flip_pick_side     = cfg["flip_pick_side"]
-    exclude_sections   = cfg["exclude_sections"]
-    out_dir            = cfg["output_directory"]
-    file_name          = cfg["file_name"]
+    slot_height = cfg["slot_height"]
+    slot_bottom_height_floor_2 = cfg["slot_bottom_height_floor_2"]
+    slot_height_floor_2 = cfg["slot_height_floor_2"]
+    flip_pick_side = cfg["flip_pick_side"]
+    exclude_sections = cfg["exclude_sections"]
+    out_dir = cfg["output_directory"]
+    file_name = cfg["file_name"]
 
-    data = generate_e_hallway_locations(
+    data = generate_hallway_locations(
         hallway_name,
         start_section,
         end_section,
         second_floor,
         slot_bottom_height,
         slot_height,
+        slot_bottom_height_floor_2,
+        slot_height_floor_2,
         flip_pick_side,
         exclude_sections
     )

@@ -1,10 +1,12 @@
 {
     "hallway_name": "E",
     "start_section": 2,
-    "end_section": 6,
+    "end_section": 40,
     "second_floor": true,
     "slot_bottom_height": 0,
     "slot_height": 1.46,
+    "slot_bottom_height_floor_2": 1.59,
+    "slot_height_floor_2": 1.46,
     "flip_pick_side": false,
     "exclude_sections": [],
     "output_directory": "json_files",
