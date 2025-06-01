@@ -3,13 +3,16 @@ import json
 def generate_e_hallway_locations(
     start_section=2,
     end_section=40,
+    second_floor=False,
     slot_bottom_height=0,
     slot_height=1.46,
-    sub_locations=(21, 25, 29),
-    locations_map=None
 ):
-    if locations_map is None:
-        locations_map = {21: 11, 25: 15, 29: 19} # mapping for second floor locations
+    if not second_floor:
+        sub_locations=(11, 15, 19)
+    else:
+        sub_locations=(21, 25, 29)
+
+    locations_map = {21: 11, 25: 15, 29: 19} # mapping for second floor locations
 
     locations = []
     for section in range(start_section, end_section + 1):
@@ -33,7 +36,7 @@ def generate_e_hallway_locations(
     return locations
 
 def main():
-    data = generate_e_hallway_locations(2, 40)
+    data = generate_e_hallway_locations(2, 40, False, 0, 1.46)
 
     file_name = "E-hallway-test.json"
 
