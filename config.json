@@ -5,6 +5,7 @@
     "second_floor": true,
     "slot_bottom_height": 0,
     "slot_height": 1.46,
+    "flip_pick_side": false,
     "output_directory": "json_files",
     "file_name": "default.json"
 }

@@ -20,6 +20,7 @@ def load_config(path="config.json"):
     cfg.setdefault("second_floor", False)
     cfg.setdefault("slot_bottom_height", 0)
     cfg.setdefault("slot_height", 1.46)
+    cfg.setdefault("flip_pick_side", False)
     cfg.setdefault("output_directory", "json_files")
     cfg.setdefault("file_name", "default-hallway.json")
 
@@ -28,8 +29,8 @@ def load_config(path="config.json"):
     if not isinstance(cfg["start_section"], int) or not isinstance(cfg["end_section"], int):
         print("Error: 'start_section' and 'end_section' must be integers.")
         sys.exit(1)
-    if not isinstance(cfg["second_floor"], bool):
-        print("Error: 'second_floor' must be true or false.")
+    if not isinstance(cfg["second_floor"], bool) or not isinstance(cfg["flip_pick_side"], bool):
+        print("Error: 'second_floor' and 'flip_pick_side' must be true or false.")
         sys.exit(1)
     if not isinstance(cfg["slot_bottom_height"], (int, float)) or not isinstance(cfg["slot_height"], (int, float)):
         print("Error: 'slot_bottom_height' and 'slot_height' must be numbers.")
@@ -46,7 +47,8 @@ def generate_e_hallway_locations(
     end_section,
     second_floor,
     slot_bottom_height,
-    slot_height
+    slot_height,
+    flip_pick_side
 ):
     if not second_floor:
         sub_locations = (11, 15, 19)
@@ -57,8 +59,11 @@ def generate_e_hallway_locations(
 
     locations = []
     for section in range(start_section, end_section + 1):
-        pick_side = "Left" if (section % 2 == 0) else "Right"
-
+        if flip_pick_side:
+            pick_side = "Right" if (section % 2 == 0) else "Left"
+        else:
+            pick_side = "Left" if (section % 2 == 0) else "Right"
+            
         for loc in sub_locations:
             location_tag = f"{hallway_name}.{section:02d}.{loc}"
 
@@ -87,6 +92,7 @@ def main():
     second_floor = cfg["second_floor"]
     slot_bottom_height = cfg["slot_bottom_height"]
     slot_height = cfg["slot_height"]
+    flip_pick_side = cfg["flip_pick_side"]
     out_dir = cfg["output_directory"]
     file_name = cfg["file_name"]
 
@@ -97,7 +103,8 @@ def main():
         end_section,
         second_floor,
         slot_bottom_height,
-        slot_height
+        slot_height,
+        flip_pick_side
     )
 
     # 3) Ensure the output directory exists
